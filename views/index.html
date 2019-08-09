@@ -1,0 +1,56 @@
+<!-- Game Buddy login page -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Game Buddy</title>
+    <meta name="description" content="Game Buddy login">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/index.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>
+        Game Buddy
+      </h1>
+    </header>
+
+    <main>
+      
+      <form method="get" action="/login">
+        <input name="username" type="text" placeholder="username">
+        <input name="password" type="text" placeholder="password">
+        <button type="submit">
+          Login
+        </button>
+      </form>    
+
+      <div>
+      <a href="/register"><button>
+        Register
+      </button></a>
+      </div>
+
+      
+      <section class="dreams">
+        <ul id="dreams"></ul>
+      </section>
+    </main>
+    
+    
+<!--
+    <footer>
+      Made with <a href="https://glitch.com">Glitch</a>!
+    </footer>
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>-->
+
+  </body>
+</html>
