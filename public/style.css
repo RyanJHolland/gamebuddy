@@ -8,7 +8,7 @@
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
   margin: 2em;
-  background: gray;
+  background: lightgray;
 }
 
 h1 {
@@ -69,4 +69,14 @@ footer {
   margin-top: 50px;
   padding-top: 25px;
   border-top: 1px solid lightgrey;
+}
+
+#responseText {
+  color: red;
+  background-color: white;
+  padding: 30px;
+}
+
+main {
+  max-width: 300px;
 }

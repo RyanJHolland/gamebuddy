@@ -11,9 +11,7 @@ function registerButton() {
 http.setRequestHeader('Content-type', 'application/json');
 
 http.onreadystatechange = function() { // Callback function
-    if(http.readyState == 4 && http.status == 200) {
-        document.getElementById('responseText').innerValue = http.responseText;
-    }
+  document.getElementById('responseText').innerHTML = http.responseText;
 }
 http.send(JSON.stringify(params));
   }
