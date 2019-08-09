@@ -1,6 +1,6 @@
-function registerButton() {
+function loginButton() {
   var http = new XMLHttpRequest()
-  var url = '/register' 
+  var url = '/login' 
   var params = {
     'username': document.getElementById("usernameInput").value,
     'password': document.getElementById("passwordInput").value

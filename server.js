@@ -54,13 +54,27 @@ db.serialize(function(){
 //////////////////////// ROUTES ////////////////////////////
 
 // login //////////
-app.get('/login', function(req, res) {
+app.post('/login', function(req, res) {
   console.log('get req to /login')
-  if (req.query.username == 'gamer99' && req.query.password == '1234') {
-    res.redirect('/main');
-  } else {
-    res.send('Incorrect username or password!')
-  }
+  console.log(req.body)
+  var un = req.body.username;
+  var pw = req.body.password;
+  var sql = 'SELECT * FROM Users WHERE Username="' + un + '" AND Password="' + pw + '";';
+  console.log(sql)
+  setTimeout(function() {
+        res.send('Invalid username or password!')
+  }, 1200)
+  db.serialize(function() {
+    db.each(sql, function(err, row) {
+      if (row) {
+        console.log('authorized')
+        // Log-in authorized
+        res.json({'redirect': true, 'redirect_url': '/main'})
+      } else {
+        res.send('Invalid username or password!')
+      }
+    })
+  });
 });
 
 // main menu /////////////
@@ -85,7 +99,7 @@ app.post('/register', function(req,res) {
   db.serialize(function() {
       db.run('INSERT INTO Users (Username, Password) VALUES ("' + un + '", "' + pw + '");', function(err) {
         if (err) {
-          console.log('un lenght = ' + un.length)
+          console.log('ERROR: ' + err)
           if (un.length < 3) {
             res.send('Error: Username cannot be less than 3 characters.')
           } else
@@ -102,7 +116,7 @@ app.post('/register', function(req,res) {
           }
         } else {
           // no error: New account created. 
-          res.redirect('/main')
+          res.json({'redirect': true, 'redirect_url': '/main'})
         }
       });
     });

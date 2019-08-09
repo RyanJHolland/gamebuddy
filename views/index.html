@@ -25,32 +25,31 @@
 
     <main>
       
-      <form method="get" action="/login">
-        <input name="username" type="text" placeholder="username">
-        <input name="password" type="text" placeholder="password">
-        <button type="submit">
+      <div>
+        <h5>
+          Username: 
+        </h5><input name="username" type="text" placeholder="username" id="usernameInput">
+        <h5>
+          Password: 
+        </h5><input name="password" type="text" placeholder="password" id="passwordInput">
+        <br>
+        <button id="loginButton" onclick="loginButton()">
           Login
         </button>
-      </form>    
-
+      </div>    
+      <br>
+      <section id="responseText">
+        
+      </section>
+      
+      
       <div>
       <a href="/register"><button>
         Register
       </button></a>
       </div>
 
-      
-      <section class="dreams">
-        <ul id="dreams"></ul>
-      </section>
     </main>
-    
-    
-<!--
-    <footer>
-      Made with <a href="https://glitch.com">Glitch</a>!
-    </footer>
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>-->
 
   </body>
 </html>
