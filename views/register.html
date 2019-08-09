@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/style.css">
     
     <!-- import the webpage's client-side javascript file -->
-    <script src="/index.js" defer></script>
+    <script src="/register.js" defer></script>
   </head>
   <body>
     <header>
@@ -25,15 +25,15 @@
 
     <main>
       
-      <form method="post">
-        <input name="username" type="text" placeholder="username">
-        <input name="password" type="text" placeholder="password">
-        <button id="registerButton">
+      <div>
+        <input name="username" type="text" placeholder="username" id="usernameInput">
+        <input name="password" type="text" placeholder="password" id="passwordInput">
+        <button id="registerButton" onclick="registerButton()">
           Register
         </button>
-      </form>    
+      </div>    
       
-      <div id="statusText">
+      <div id="responseText">
         
       </div>
       

@@ -4,12 +4,12 @@
 
 const express = require('express');
 const app = express();
-
-// http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
-var bodyParser = require('body-parser')
 
-// http://expressjs.com/en/starter/basic-routing.html
+//var bodyParser = require('body-parser')
+app.use(express.json());       // to support JSON-encoded bodies
+//app.use(express.urlencoded()); // to support URL-encoded bodies
+
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
@@ -26,12 +26,12 @@ var db = new sqlite3.Database(dbFile);
 // if ./.data/sqlite.db does not exist, create it, otherwise print records to console
 db.serialize(function(){
   if (!exists) {
-    db.run('CREATE TABLE Users (username TEXT), (password TEXT)');
+    db.run('CREATE TABLE Users (Username TEXT, Password TEXT)');
     console.log('New table Users created!');
     
     // insert default users
     db.serialize(function() {
-      db.run('INSERT INTO Users (username, password) VALUES ("gamer99", "1234"), ("ninja", "haxor"), ("loganpaul", "bruh");');
+      db.run('INSERT INTO Users (Username, Password) VALUES ("gamer99", "1234"), ("ninja", "haxor"), ("loganpaul", "bruh");');
     });
   }
   else {
@@ -39,6 +39,9 @@ db.serialize(function(){
     db.each('SELECT * from Users', function(err, row) {
       if ( row ) {
         console.log('record:', row);
+      } 
+      if ( err ) {
+        console.log('error: ', err);
       }
     });
   }
@@ -47,7 +50,7 @@ db.serialize(function(){
 
 //////////////////////// ROUTES ////////////////////////////
 
-// login page
+// login //////////
 app.get('/login', function(req, res) {
   console.log('get req to /login')
   if (req.query.username == 'gamer99' && req.query.password == '1234') {
@@ -57,21 +60,25 @@ app.get('/login', function(req, res) {
   }
 });
 
-// main menu
+// main menu /////////////
 app.get('/main', function(req, res) {
   console.log('get req to /main')
   res.sendFile(__dirname + '/views/main.html');
 });
 
-// register page
+// register account ////////////
+// load the html page
 app.get('/register', function(req,res) {
   console.log('get req to /register')
   res.sendFile(__dirname + '/views/register.html');
 });
-    app.post('/register', function(req,res) {
-      console.log('post req to /register')
-      
-    });
+// endpoint for creating a new account
+app.post('/register', function(req,res) {
+  console.log('post req to /register')
+  console.log('username = ' + req.body.username)
+  console.log('password = ' + req.body.password)
+  
+});
 
 ///////////////////////// RUN SERVER //////////////////////////////
 

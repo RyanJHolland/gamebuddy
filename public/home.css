@@ -136,6 +136,7 @@ a:visited{
 }
 
 .newsStory{
+  max-height: 100%;
   padding: 25px;
   font-family: "Thasadith", sans-serif;
   background-image: linear-gradient(#ffffff00, #000);
@@ -146,17 +147,17 @@ a:visited{
 }
 
 .moreNews{
-  display: none;
+  display: block;
   position: absolute;
   top: 85%;
-  width: 100%;
+  width: 90%;
   height: 20%;
-  z-index: 10;
-}
-
-.news div:hover + .moreNews{
-  display: block;
-  color: white;
+  left: 5%;
+  z-index: 100;
+  background-image: url("https://cdn.glitch.com/8e36f590-d0a9-46d1-86d8-1f6fadc7140a%2Farrow.png?v=1565311806157");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.5;
 }
 
 .sync{
