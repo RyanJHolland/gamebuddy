@@ -1,0 +1,96 @@
+<!-- Game Buddy page for linking your Game Buddy account with your accounts on other platforms -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Link other platforms</title>
+    <meta name="description" content="Game Buddy page for linking your Game Buddy account with your accounts on other platforms">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/platformRegistration.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>
+        Link game platforms
+      </h1>
+    </header>
+
+    <main>
+      
+      <div id="Steam">
+          <h4>
+            Steam
+        </h4><input name="steamUsername" type="text" placeholder="username" id="steamUsernameInput"><input name="steamPassword" type="text" placeholder="password" id="steamPasswordInput">
+        <button onclick="registerSteam()">
+          Register
+        </button>
+        <span id="steamErr"></span>
+      </div>    
+      <br><br>
+      
+      <div id="Battlenet">
+          <h4>
+            Battlenet
+        </h4>
+<input name="battlenetUsername" type="text" placeholder="username" id="battlenetUsernameInput">
+<input name="battlenetPassword" type="text" placeholder="password" id="battlenetPasswordInput">
+        <button onclick="registerBattlenet()">
+          Register
+        </button><br>
+        <span id="battlenetErr"></span>
+      </div>   
+      <br>
+      <div id="Origin">
+          <h4>
+            Origin
+        </h4>
+        <input name="originUsername" type="text" placeholder="username" id="originUsernameInput">
+        <input name="originPassword" type="text" placeholder="password" id="originPasswordInput">
+        <button onclick="registerOrigin()">
+          Register
+        </button><br>
+        <span id="originErr"></span>
+      </div>    
+      
+      <script>
+
+        function registerSteam(){
+          var validated = Math.random();
+          if (validated > 0.5) {
+            document.getElementById('Steam').innerHTML = "Steam has been linked!<br><button>Change</button>"
+          } else {
+            document.getElementById('steamErr').innerHTML = "Invalid username or password!" 
+          }
+        }
+        
+        function registerBattlenet(){
+          var validated = Math.random();
+          if (validated > 0.5) {
+            document.getElementById('Battlenet').innerHTML = "Battle.net has been linked!<br><button>Change</button>"
+          } else {
+            document.getElementById('battlenetErr').innerHTML = "Invalid username or password!" 
+            }
+        }
+        
+        function registerOrigin(){
+          var validated = Math.random();
+          if (validated > 0.5) {
+            document.getElementById('Origin').innerHTML = "Origin has been linked!<br><button>Change</button>"
+          } else {
+            document.getElementById('originErr').innerHTML = "Invalid username or password!" 
+            }
+        }
+    
+      </script>
+      
+    </main>
+  </body>
+</html>

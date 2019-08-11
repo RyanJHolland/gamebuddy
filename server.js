@@ -10,10 +10,6 @@ app.use(express.static('public'));
 app.use(express.json());       // to support JSON-encoded bodies
 //app.use(express.urlencoded()); // to support URL-encoded bodies
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/views/index.html');
-});
-
 
 ////////////// DATABASE ////////////////////
 
@@ -52,6 +48,17 @@ db.serialize(function(){
 
 
 //////////////////////// ROUTES ////////////////////////////
+
+
+// Index /////////////////
+// (currently skipping the login page)
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/views/main.html');
+});
+
+app.get('/v2', function(req,res){
+  res.sendFile(__dirname + '/views/PlatformRegistrationv2.html')
+})
 
 // login //////////
 app.post('/login', function(req, res) {
@@ -121,6 +128,27 @@ app.post('/register', function(req,res) {
       });
     });
 });
+
+
+//////// PlatformRegistration ///////////////
+// (Game Buddy page for linking your Game Buddy account with your accounts on other platforms)
+
+// load registration page
+app.get('/PlatformRegistration', function(req,res) {
+  console.log('get req to /PlatformRegistration')
+  res.sendFile(__dirname + '/views/PlatformRegistrationv2.html');
+});
+
+app.post('/registerPlatform', function(req,res) {
+  console.log('post req to registerPlatform')
+  var valid = Math.random();
+  if (valid > 0.5) {
+    res.send('Platform linked!')
+  } else {
+    res.send('Username or password is incorrect.')
+  }
+})
+
 
 ///////////////////////// RUN SERVER //////////////////////////////
 
